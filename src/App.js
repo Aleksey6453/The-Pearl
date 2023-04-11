@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import Header from './components/Header';
+import Categories from './components/Categories';
+import Sort from './components/Sort';
+import Content from './components/Content';
+import Card from './components/Card';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          The Store about pearl 
-        </a>        
-      </header>
+      <div className="wrapper">
+        <Header />
+        <div className="meny gorizontal_block">
+          <Categories />
+          <Sort />
+        </div>
+        <Content />
+      </div>
     </div>
   );
 }

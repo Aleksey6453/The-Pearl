@@ -1,11 +1,20 @@
 import React from 'react'
+import logo from '../assets/img/logo.png'
 
 const Header = () => {
   return (
-    <div>
-      <h1>
-        Header
-      </h1>
+    <div className='header'>
+      <div className='block j_con_start'>
+        <img src={logo} alt="logo" className='logo'/>
+        <h1 className='title'>
+          Pearl for you
+        </h1>
+      </div>
+      <div className='block j_con_end'>
+        <h2>  
+          Cart
+        </h2>
+      </div> 
     </div>
   )
 }

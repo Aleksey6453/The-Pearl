@@ -1,0 +1,102 @@
+[
+    {
+        "id": 0,
+        "imageUrl": "img/pearl/1.jpg",
+        "title": "Flaki",
+        "types": [0, 1],
+        "sizes": [10, 13, 15],
+        "price": 343,
+        "category": 0,
+        "rating": 3
+    },
+    {
+        "id": 1,
+        "imageUrl": "img/pearl/2.jpg ",
+        "title": "Bebuchi",
+        "types": [1],
+        "sizes": [9, 11, 15],
+        "price": 243,
+        "category": 1,
+        "rating": 2
+    },
+    {
+        "id": 2,
+        "imageUrl": "img/pearl/3.jpg",
+        "title": "Wibrac",
+        "types": [0, 1],
+        "sizes": [7, 9, 11],
+        "price": 373,
+        "category": 1,
+        "rating": 2
+    },
+    {
+        "id": 3,
+        "imageUrl": "img/pearl/4.jpg ",
+        "title": "Colnico",
+        "types": [0],
+        "sizes": [10, 12, 16],
+        "price": 423,
+        "category": 1,
+        "rating": 2
+    },
+    {
+        "id": 4,
+        "imageUrl": "img/pearl/5.jpg ",
+        "title": "Litary",
+        "types": [0],
+        "sizes": [7, 13, 16],
+        "price": 443,
+        "category": 1,
+        "rating": 2
+    },
+    {
+        "id": 5,
+        "imageUrl": "img/pearl/6.jpg ",
+        "title": "Jakomo",
+        "types": [0, 1],
+        "sizes": [9, 12, 14],
+        "price": 392,
+        "category": 1,
+        "rating": 2
+    },
+    {
+        "id": 6,
+        "imageUrl": "img/pearl/7.jpg ",
+        "title": "Juzenir",
+        "types": [1],
+        "sizes": [10, 13, 15],
+        "price": 333,
+        "category": 1,
+        "rating": 2
+    },
+    {
+        "id": 7,
+        "imageUrl": "img/pearl/8.jpg ",
+        "title": "Noro",
+        "types": [1],
+        "sizes": [10, 11, 17],
+        "price": 293,
+        "category": 1,
+        "rating": 2
+    },
+    {
+        "id": 8,
+        "imageUrl": "img/pearl/9.jpg ",
+        "title": "Laku",
+        "types": [0, 1],
+        "sizes": [11, 14, 17],
+        "price": 423,
+        "category": 1,
+        "rating": 2
+    },
+    {
+        "id": 9,
+        "imageUrl": "img/pearl/2.jpg ",
+        "title": "Ozoris",
+        "types": [0],
+        "sizes": [10, 11, 12],
+        "price": 363,
+        "category": 1,
+        "rating": 2
+    }
+]

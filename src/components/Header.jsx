@@ -7,7 +7,7 @@ const Header = () => {
       <div className='block j_con_start'>
         <img src={logo} alt="logo" className='logo'/>
         <h1 className='title'>
-          Pearl for you
+          Pearl
         </h1>
       </div>
       <div className='block j_con_end'>

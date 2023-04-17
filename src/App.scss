@@ -3,14 +3,14 @@
 }
 
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+// @keyframes App-logo-spin {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
 
 
 .wrapper{
@@ -83,6 +83,7 @@
 
 .triangle{
   margin-right: 5px;
+  margin-top: 5px;
 }
 
 .meny{
@@ -224,6 +225,10 @@
     font-weight: bold;
     letter-spacing: 1.5px;
     font-size: 17px;
+  }
+
+  .marg_r_10{
+    margin-right: 10px;
   }
 
  

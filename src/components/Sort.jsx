@@ -20,7 +20,7 @@ const onClickListItem = (i) => {
         <img src={arrow_down} width={20} alt="triangle" className='triangle'/>
       }
      
-      <b>sort by: </b>
+      <b className='marg_r_10'>sort by:</b>
       <span>{list[selected]}</span>
      </div>
      {openPopup && (

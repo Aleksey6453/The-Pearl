@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import logo from '../assets/img/logo.png'
+import Search from './Search/Index'
 
 const Header = () => {
   return (
@@ -15,6 +16,7 @@ const Header = () => {
       </Link>
       
       <div className='block j_con_end'>
+        <Search />
         <Link to={'/cart'}>
           <h2>  
             Cart

@@ -2,13 +2,19 @@ import React from 'react'
 import arrow from '../assets/img/arrow_up.svg'
 import arrow_down from '../assets/img/arrow_down.svg'
 
-const Sort = () => {
+const Sort = ({value, onChangeSort}) => {
 const [openPopup, setOpenPopup] = React.useState(false)
-const [selected, setSelected] = React.useState(0)
+const list = [
+    {name:'top sellers DESC', sortProperty: 'rating'},
+    {name:'top sellers ASC', sortProperty: '-rating'},
+    {name:'alphabetical (ZtoA)', sortProperty:'title'},
+    {name:'alphabetical (AtoZ)', sortProperty:'-title'}, 
+    {name:'price is going down', sortProperty:'price'},
+    {name:'price is going up', sortProperty:'-price'}
+  ]
 
-const list = ['top sellers', 'alphabetical (AtoZ)', 'new arrivals', 'price (low to high)', 'price (high to low)']
 const onClickListItem = (i) => {
-  setSelected(i);
+  onChangeSort(i);
   setOpenPopup(false);
 };
   return (
@@ -21,17 +27,17 @@ const onClickListItem = (i) => {
       }
      
       <b className='marg_r_10'>sort by:</b>
-      <span>{list[selected]}</span>
+      <span>{value.name}</span>
      </div>
      {openPopup && (
          <div className="sort_popup">
             <ul>
               {
-                list.map((el, i)=> (
+                list.map((obj, i)=> (
                   <li key={i}
-                      onClick={()=> onClickListItem(i)}
-                      className={selected === i ? 'active' : ''}
-                   >{el}</li>
+                      onClick={()=> onClickListItem(obj)}
+                      className={value.sortProperty === obj.sortProperty ? 'active' : ''}
+                   >{obj.name}</li>
                 ))
               }
             </ul>

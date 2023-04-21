@@ -59,7 +59,7 @@
   flex-direction: column;
 }
 .sort_label{
-  padding-right: 10px;
+  // padding-right: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -233,6 +233,36 @@
 
   .marg_r_10{
     margin-right: 10px;
+  }
+
+  .gorizontal_cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+  }
+
+  .cart_card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    padding: 20px;
+    .image_cart_card{
+      width: 10%;
+    }
+    .title_cart_card{
+      width: 40%;
+    }
+    .count_cart_card{
+      width: 30%;
+    }
+    .price_cart_card{
+      width: 10%;
+    }
+    .delete_cart_card{
+      width: 10%;
+    }
   }
 
  

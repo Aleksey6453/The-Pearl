@@ -6,9 +6,12 @@ import Skeleton from './Skeleton'
 const Content = () => {
   const [items, setItems] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
+  const [categoryId, setCategoryId] = React.useState(0)
+ 
 
   React.useEffect(()=>{
-    fetch('https://6424ae787ac292e3cfef8991.mockapi.io/items')
+    setIsLoading(true)
+    fetch('https://6424ae787ac292e3cfef8991.mockapi.io/items?category=' +categoryId)
     .then((res)=>{
       return res.json()
     })
@@ -16,7 +19,8 @@ const Content = () => {
       setItems(arr)
       setIsLoading(false)
     });
-  }, []);
+    window.scrollTo(0,0);
+  }, [categoryId]);
 
   return (
     <>

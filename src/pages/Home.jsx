@@ -5,8 +5,11 @@
  import Card from '../components/Card'
  import Skeleton from '../components/Skeleton'
  import Pagination from '../components/pagination/Index'
+import { AppContext } from '../App'
 
- const Home = ({searchValue}) => {
+ const Home = () => {
+
+  const {searchValue} = React.useContext(AppContext)
 
   const [categoryId, setCategoryId] = React.useState(0)
   const [sortType, setSortType] = React.useState({

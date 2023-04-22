@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import logo from '../assets/img/logo.png'
 import Search from './Search/Index'
 
-const Header = ({searchValue, setSearchValue}) => {
+const Header = () => {
   return (
     <div className='header'>
       <Link to={'/'}>
@@ -16,7 +16,7 @@ const Header = ({searchValue, setSearchValue}) => {
       </Link>
       
       <div className='block j_con_end'>
-        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Search />
         <Link to={'/cart'}>
           <h2>  
             Cart

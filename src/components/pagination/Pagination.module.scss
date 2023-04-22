@@ -1,0 +1,38 @@
+.root{
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    cursor: pointer;
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 50px;
+    //   :global{
+    //     .previous{
+    //         color: aqua;
+    //         background-color: black;
+    //     }
+    //     .next{
+    //         color: aqua;
+    //         background-color: black;
+    //     }
+    //   }
+    li{
+        padding: 5px;
+        border-radius: 50%;
+        font-weight: bold;
+        border: 2px solid aqua;
+        width: 30px;
+        height: 30px;
+        line-height: 25px;
+        &:hover{
+            background-color: black;
+            color: aqua;
+            transition: all .5s;
+            font-size: 17px;
+            width: 31px;
+            height: 31px;
+            line-height: 26px;
+            border: 2px solid black;
+        }
+    }
+}

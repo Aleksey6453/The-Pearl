@@ -1,9 +1,10 @@
  import React from 'react'
-
+ 
  import Categories from '../components/Categories'
  import Sort from '../components/Sort'
  import Card from '../components/Card'
  import Skeleton from '../components/Skeleton'
+ import Pagination from '../components/pagination/Index'
 
  const Home = ({searchValue}) => {
 
@@ -14,16 +15,17 @@
   })
   const [items, setItems] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
+  const [currentPage, setCurrentPage] = React.useState(1)
 
   const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
   const sortBy = sortType.sortProperty.replace('-', '');
   const category = categoryId > 0 ? `category=${categoryId}` : '';
   const search = searchValue ? `&search=${searchValue}` : '';
-
+ 
   React.useEffect(()=>{
    
     setIsLoading(true)
-    fetch(`https://6424ae787ac292e3cfef8991.mockapi.io/items?${category}&sortBy=${sortBy}&order=${order}${search}`
+    fetch(`https://6424ae787ac292e3cfef8991.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
         )
     .then((res)=>{
       return res.json()
@@ -33,7 +35,7 @@
       setIsLoading(false)
     });
     window.scrollTo(0,0);
-  }, [categoryId, sortType, searchValue]);
+  }, [categoryId, sortType, searchValue, currentPage]);
 
   // const pearls = items.filter(obj => {
   //   if (obj.title.toLowerCase().includes(searchValue.toLowerCase())){
@@ -62,8 +64,8 @@
                 pearls
               }
             </div>
-          
           </>
+          <Pagination onChangePage={(number)=> setCurrentPage(number)} />
     </div>
    )
  }

@@ -11,11 +11,13 @@ export const AppContext = React.createContext('')
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('')
- 
+
   return (
    
       <div className="App">
         <div className="wrapper">
+          
+         
         <AppContext.Provider value={{searchValue, setSearchValue}}>
               <Header />
               <Routes>

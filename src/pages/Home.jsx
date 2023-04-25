@@ -1,29 +1,43 @@
  import React from 'react'
+ import { useSelector, useDispatch } from 'react-redux'
+ import {setCategoryId} from '../redux/slices/filterSlice'
  
  import Categories from '../components/Categories'
  import Sort from '../components/Sort'
  import Card from '../components/Card'
  import Skeleton from '../components/Skeleton'
  import Pagination from '../components/pagination/Index'
-import { AppContext } from '../App'
+ import { AppContext } from '../App'
+
 
  const Home = () => {
+  const dispatch = useDispatch();
+  const {categoryId, sort} = useSelector(state => state.filterSlice);
+  // const sortType = sort.sortProperty
+  
+
+  console.log('redux state', categoryId)
+
+
+
+
+
 
   const {searchValue} = React.useContext(AppContext)
-
-  const [categoryId, setCategoryId] = React.useState(0)
-  const [sortType, setSortType] = React.useState({
-    name:'top sellers', 
-    sortProperty: 'rating'
-  })
   const [items, setItems] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
   const [currentPage, setCurrentPage] = React.useState(1)
 
-  const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
-  const sortBy = sortType.sortProperty.replace('-', '');
+  const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+  const sortBy = sort.sortProperty.replace('-', '');
   const category = categoryId > 0 ? `category=${categoryId}` : '';
   const search = searchValue ? `&search=${searchValue}` : '';
+
+
+  const onClickCategory = (id) => {
+      console.log(id)
+      dispatch(setCategoryId(id));
+  }
  
   React.useEffect(()=>{
    
@@ -38,7 +52,7 @@ import { AppContext } from '../App'
       setIsLoading(false)
     });
     window.scrollTo(0,0);
-  }, [categoryId, sortType, searchValue, currentPage]);
+  }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
   // const pearls = items.filter(obj => {
   //   if (obj.title.toLowerCase().includes(searchValue.toLowerCase())){
@@ -52,8 +66,8 @@ import { AppContext } from '../App'
    return (
     <div className="wrapper">
         <div className="meny">
-          <Categories value={categoryId} onClickCat={(i) => setCategoryId(i)}/>
-          <Sort value={sortType} onChangeSort={(i) => setSortType(i)}/>
+          <Categories value={categoryId} onClickCat={onClickCategory}/>
+          <Sort />
         </div>
         
           <>

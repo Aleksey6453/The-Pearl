@@ -1,8 +1,13 @@
 import React from 'react'
 import arrow from '../assets/img/arrow_up.svg'
 import arrow_down from '../assets/img/arrow_down.svg'
+import {useSelector, useDispatch} from 'react-redux'
+import { setSort } from '../redux/slices/filterSlice'
 
-const Sort = ({value, onChangeSort}) => {
+const Sort = () => {
+const dispatch = useDispatch();
+const sort = useSelector(state => state.filterSlice.sort)
+
 const [openPopup, setOpenPopup] = React.useState(false)
 const list = [
     {name:'top sellers DESC', sortProperty: 'rating'},
@@ -13,8 +18,8 @@ const list = [
     {name:'price is going up', sortProperty:'-price'}
   ]
 
-const onClickListItem = (i) => {
-  onChangeSort(i);
+const onClickListItem = (obj) => {
+  dispatch(setSort(obj));
   setOpenPopup(false);
 };
   return (
@@ -27,7 +32,7 @@ const onClickListItem = (i) => {
       }
      
       <b className='marg_r_10'>sort by:</b>
-      <span>{value.name}</span>
+      <span>{sort.name}</span>
      </div>
      {openPopup && (
          <div className="sort_popup">
@@ -36,7 +41,7 @@ const onClickListItem = (i) => {
                 list.map((obj, i)=> (
                   <li key={i}
                       onClick={()=> onClickListItem(obj)}
-                      className={value.sortProperty === obj.sortProperty ? 'active' : ''}
+                      className={sort.sortProperty === obj.sortProperty ? 'active' : ''}
                    >{obj.name}</li>
                 ))
               }

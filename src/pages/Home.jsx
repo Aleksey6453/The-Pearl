@@ -7,15 +7,30 @@
  import Pagination from '../components/pagination/Index'
 import { AppContext } from '../App'
 
+import { useDispatch, useSelector } from 'react-redux'
+import { setCategoryId } from '../redux/slices/filterSlice'
+
  const Home = () => {
 
+  const dispatch = useDispatch()
+
+  // console.log(dispatch, 'App')
+  const categoryId = useSelector(state => state.filter.categoryId)
+
+  // const setCategoryId = () => {}
+  // console.log("redux state:", categoryId )
   const {searchValue} = React.useContext(AppContext)
 
-  const [categoryId, setCategoryId] = React.useState(0)
+  // const [categoryId, setCategoryId] = React.useState(0)
   const [sortType, setSortType] = React.useState({
     name:'top sellers', 
     sortProperty: 'rating'
   })
+
+  const onChangeCategory = (id) => {
+    console.log(id)
+    dispatch(setCategoryId(id))
+  }
   const [items, setItems] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
   const [currentPage, setCurrentPage] = React.useState(1)
@@ -26,7 +41,7 @@ import { AppContext } from '../App'
   const search = searchValue ? `&search=${searchValue}` : '';
  
   React.useEffect(()=>{
-   
+
     setIsLoading(true)
     fetch(`https://6424ae787ac292e3cfef8991.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
         )
@@ -52,7 +67,7 @@ import { AppContext } from '../App'
    return (
     <div className="wrapper">
         <div className="meny">
-          <Categories value={categoryId} onClickCat={(i) => setCategoryId(i)}/>
+          <Categories value={categoryId} onClickCat={onChangeCategory}/>
           <Sort value={sortType} onChangeSort={(i) => setSortType(i)}/>
         </div>
         

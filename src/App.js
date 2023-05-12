@@ -7,11 +7,14 @@ import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
 
 
+
 export const AppContext = React.createContext('')
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('')
+
  
+
   return (
    
       <div className="App">

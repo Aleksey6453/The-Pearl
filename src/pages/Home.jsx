@@ -5,27 +5,18 @@
  import Card from '../components/Card'
  import Skeleton from '../components/Skeleton'
  import Pagination from '../components/pagination/Index'
-import { AppContext } from '../App'
+ import { AppContext } from '../App'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setCategoryId } from '../redux/slices/filterSlice'
+import { setCategoryId} from '../redux/slices/filterSlice'
 
  const Home = () => {
 
   const dispatch = useDispatch()
-
-  // console.log(dispatch, 'App')
-  const categoryId = useSelector(state => state.filter.categoryId)
-
-  // const setCategoryId = () => {}
-  // console.log("redux state:", categoryId )
+  const {categoryId, sort} = useSelector(state => state.filter)
+ 
+ 
   const {searchValue} = React.useContext(AppContext)
-
-  // const [categoryId, setCategoryId] = React.useState(0)
-  const [sortType, setSortType] = React.useState({
-    name:'top sellers', 
-    sortProperty: 'rating'
-  })
 
   const onChangeCategory = (id) => {
     console.log(id)
@@ -35,8 +26,8 @@ import { setCategoryId } from '../redux/slices/filterSlice'
   const [isLoading, setIsLoading] = React.useState(true)
   const [currentPage, setCurrentPage] = React.useState(1)
 
-  const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
-  const sortBy = sortType.sortProperty.replace('-', '');
+  const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
+  const sortBy = sort.sortProperty.replace('-', '');
   const category = categoryId > 0 ? `category=${categoryId}` : '';
   const search = searchValue ? `&search=${searchValue}` : '';
  
@@ -53,7 +44,7 @@ import { setCategoryId } from '../redux/slices/filterSlice'
       setIsLoading(false)
     });
     window.scrollTo(0,0);
-  }, [categoryId, sortType, searchValue, currentPage]);
+  }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
   // const pearls = items.filter(obj => {
   //   if (obj.title.toLowerCase().includes(searchValue.toLowerCase())){
@@ -68,7 +59,7 @@ import { setCategoryId } from '../redux/slices/filterSlice'
     <div className="wrapper">
         <div className="meny">
           <Categories value={categoryId} onClickCat={onChangeCategory}/>
-          <Sort value={sortType} onChangeSort={(i) => setSortType(i)}/>
+          <Sort />
         </div>
         
           <>

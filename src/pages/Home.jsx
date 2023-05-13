@@ -1,11 +1,11 @@
  import React from 'react'
- 
  import Categories from '../components/Categories'
  import Sort from '../components/Sort'
  import Card from '../components/Card'
  import Skeleton from '../components/Skeleton'
  import Pagination from '../components/pagination/Index'
  import { AppContext } from '../App'
+ import axios from 'axios'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { setCategoryId} from '../redux/slices/filterSlice'
@@ -34,15 +34,13 @@ import { setCategoryId} from '../redux/slices/filterSlice'
   React.useEffect(()=>{
 
     setIsLoading(true)
-    fetch(`https://6424ae787ac292e3cfef8991.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-        )
-    .then((res)=>{
-      return res.json()
-    })
-    .then((arr)=>{
-      setItems(arr)
+
+    axios.get(`https://6424ae787ac292e3cfef8991.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
+    )
+    .then(res => {
+      setItems(res.data)
       setIsLoading(false)
-    });
+    })
     window.scrollTo(0,0);
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 

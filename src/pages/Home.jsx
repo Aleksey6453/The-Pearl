@@ -8,28 +8,32 @@
  import axios from 'axios'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setCategoryId} from '../redux/slices/filterSlice'
+import { setCategoryId, setCurrentPage} from '../redux/slices/filterSlice'
 
  const Home = () => {
 
   const dispatch = useDispatch()
-  const {categoryId, sort} = useSelector(state => state.filter)
+  const {categoryId, sort, currentPage} = useSelector(state => state.filter)
  
  
   const {searchValue} = React.useContext(AppContext)
 
   const onChangeCategory = (id) => {
     console.log(id)
-    dispatch(setCategoryId(id))
+    dispatch(setCurrentPage(id))
   }
   const [items, setItems] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
-  const [currentPage, setCurrentPage] = React.useState(1)
+  // const [currentPage, setCurrentPage] = React.useState(1)
 
   const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
   const sortBy = sort.sortProperty.replace('-', '');
   const category = categoryId > 0 ? `category=${categoryId}` : '';
   const search = searchValue ? `&search=${searchValue}` : '';
+
+  const onChangePage = number => {
+    dispatch(setCurrentPage(number))
+  }
  
   React.useEffect(()=>{
 
@@ -43,13 +47,6 @@ import { setCategoryId} from '../redux/slices/filterSlice'
     })
     window.scrollTo(0,0);
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
-
-  // const pearls = items.filter(obj => {
-  //   if (obj.title.toLowerCase().includes(searchValue.toLowerCase())){
-  //     return true;
-  //   }
-  //   return false;
-  // }).map((obj)=> <Card key={obj.id} {... obj} />);
 
   const pearls = items.map((obj)=> <Card key={obj.id} {... obj} />);    
 
@@ -72,7 +69,7 @@ import { setCategoryId} from '../redux/slices/filterSlice'
               }
             </div>
           </>
-          <Pagination onChangePage={(number)=> setCurrentPage(number)} />
+          <Pagination onChangePage={onChangePage} currentPage={currentPage} />
     </div>
    )
  }

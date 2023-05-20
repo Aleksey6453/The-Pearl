@@ -5,7 +5,7 @@ import arrow_down from '../assets/img/arrow_down.svg'
 import { useSelector, useDispatch } from 'react-redux'
 import { setSort } from '../redux/slices/filterSlice'
 
-const list = [
+export const list = [
   {name:'top sellers DESC', sortProperty: 'rating'},
   {name:'top sellers ASC', sortProperty: '-rating'},
   {name:'alphabetical (ZtoA)', sortProperty:'title'},

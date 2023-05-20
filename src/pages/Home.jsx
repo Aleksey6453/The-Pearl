@@ -6,12 +6,14 @@
  import Pagination from '../components/pagination/Index'
  import { AppContext } from '../App'
  import axios from 'axios'
+ import qs from 'qs'
+ import {useNavigate} from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { setCategoryId, setCurrentPage} from '../redux/slices/filterSlice'
+import { setCategoryId, setCurrentPage, setFilters} from '../redux/slices/filterSlice'
 
  const Home = () => {
-
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const {categoryId, sort, currentPage} = useSelector(state => state.filter)
  
@@ -47,6 +49,23 @@ import { setCategoryId, setCurrentPage} from '../redux/slices/filterSlice'
     })
     window.scrollTo(0,0);
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
+
+  React.useEffect(()=>{
+    if (window.location.search) {
+      const params = qs.parse(window.location.search.substring(1));
+      console.log(params)
+    }
+  }, [])
+
+  React.useEffect(() => {
+    const queryString = qs.stringify({
+      sortProperty: sort.sortProperty,
+      categoryId,
+      currentPage
+    })
+
+    navigate(`?${queryString}`)
+  }, [categoryId, sort.sortProperty, searchValue, currentPage])
 
   const pearls = items.map((obj)=> <Card key={obj.id} {... obj} />);    
 
